@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "swagular": {
+      "projectType": "library",
+      "root": "projects/swagular",
+      "sourceRoot": "projects/swagular/src",
+      "prefix": "swagular",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/swagular/tsconfig.lib.json",
+            "project": "projects/swagular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/swagular/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/swagular/src/test.ts",
+            "tsConfig": "projects/swagular/tsconfig.spec.json",
+            "karmaConfig": "projects/swagular/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/swagular/tsconfig.lib.json",
+              "projects/swagular/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "swagular"
 }

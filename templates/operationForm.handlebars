@@ -1,0 +1,9 @@
+{{#if requestBody}}
+   {{methodName}}FormGroup(value?:{{upperFirstLetter methodName}}FormGroupType) {
+    return this.swagularService.getFormGroup<{{upperFirstLetter methodName}}FormGroupType>({{methodName}}FormGroupSchema, value);
+  }
+
+   {{methodName}}FormModel(options?: Partial<FormModel> & { displayProperties?: (keyof {{upperFirstLetter methodName}}FormGroupType & string)[] }, value?: {{upperFirstLetter methodName}}FormGroupType) {
+    return this.swagularService.getFormModel<{{upperFirstLetter methodName}}FormGroupType>({{methodName}}FormGroupSchema, options, value);
+  }
+{{/if}}
