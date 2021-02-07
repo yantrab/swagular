@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "clean": "rm -rf dist/ && rm -rf coverage/",
-    "copy-files": "cp -r ./templates ./dist/swagular",
+    "copy-files": "cp -r ./templates ./dist/swagular && cp ./README.md ./dist/swagular ",
     "patch": "cd ./projects/swagular && npm version patch &&  cd ../../",
     "publishh": "npm run patch &&  npm run build && npm run copy-files && cd ./dist/swagular && npm publish && cd ../../  && npm run clean"
   },

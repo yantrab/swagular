@@ -1,27 +1,55 @@
 # Swagular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+Make your swagger specification source of true by generate client api includes form group controllers.
 
-## Development server
+## Get started
+install by running ```npm i swagular```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+install [OpenAPI 3 code generator](https://www.npmjs.com/package/ng-openapi-gen) by 
 
-## Code scaffolding
+```npm i ng-openapi-gen -D'```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+add script to your package.json:
 
-## Build
+```"gen": "ng-openapi-gen --input [path to your api doc] --templates node_modules/swagular/templates",```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+import the modules to your angular modules -
 
-## Running unit tests
+```
+ApiModule.forRoot({ rootUrl: [path to your api] }),
+SwagularModule
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+now you can use generated service in you component , just add it to your component dependencies. 
 
-## Running end-to-end tests
+``` constructor(private service: SomeService) {}```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Using generated form group 
+if your route have body params, you can see the relevant form group in the generated service.
 
-## Further help
+for example - login route -
+```typescript
+formGroup = this.service.loginFormGroup();
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### using swagular form component
+you can use swagular form component instead of building the form on your own -
+* install angular material ```ng add @angular/material```
+* import ```SwagularComponentModule``` to ng module.
+* declare the form model
+```typescript
+  model: FormModel<LoginFormGroupType> = {
+  formGroup: this.service.loginFormGroup(),
+  formTitle: 'Login Form',
+  formSaveButtonTitle: 'Login',
+  fields: [{ key: 'email' }, { key: 'password', type: 'password' }]
+};
+```
+* bind the model to swagular-form component
+```angular2html
+    <swagular-form class="container" [model]="model" (submit)="login()"></swagular-form>
+```
+
+
+
+

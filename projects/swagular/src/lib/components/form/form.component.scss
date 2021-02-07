@@ -1,7 +1,7 @@
 ::ng-deep {
   .mat-dialog-container {
-    padding: 0px;
-    overflow: hidden;
+    padding: 0px !important;
+    overflow: hidden !important;
   }
   .mat-card {
     border-top-right-radius: 0px !important;

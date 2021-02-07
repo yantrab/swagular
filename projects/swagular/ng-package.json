@@ -8,10 +8,6 @@
     "ajv",
     "ajv-formats",
     "angular-typesafe-reactive-forms-helper",
-    "lodash-es",
-    "ng-table-virtual-scroll",
-    "@angular/flex-layout",
-    "@angular/material",
-    "@angular/cdk"
+    "lodash-es"
   ]
 }
