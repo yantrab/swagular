@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Inject, Input, Optional, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormModel} from './formModel';
+import {FormModel} from './form.model';
 
 @Component({
   selector: 'swagular-form',

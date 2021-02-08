@@ -3,15 +3,15 @@
 Make your swagger specification source of true by generate client api includes form group controllers.
 
 ## Get started
-install by running ```npm i swagular```
+This package use [OpenAPI 3 code generator](https://www.npmjs.com/package/ng-openapi-gen) to generate the client api, so first run ```npm i ng-openapi-gen -D```
 
-install [OpenAPI 3 code generator](https://www.npmjs.com/package/ng-openapi-gen) by 
+Install the package by running ```npm i swagular```
 
-```npm i ng-openapi-gen -D'```
-
-add script to your package.json:
+Add script that swill generate the client api code to your package.json:
 
 ```"gen": "ng-openapi-gen --input [path to your api doc] --templates node_modules/swagular/templates",```
+
+Now you can just run ```npm run gen```, it will generate the code in src/app/api folder.
 
 import the modules to your angular modules -
 
@@ -20,11 +20,12 @@ ApiModule.forRoot({ rootUrl: [path to your api] }),
 SwagularModule
 ```
 
-now you can use generated service in you component , just add it to your component dependencies. 
+Add the service to your component dependencies. 
 
 ``` constructor(private service: SomeService) {}```
 
 ### Using generated form group 
+
 if your route have body params, you can see the relevant form group in the generated service.
 
 for example - login route -
