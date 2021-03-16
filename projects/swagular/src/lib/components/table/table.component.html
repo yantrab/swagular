@@ -12,7 +12,7 @@
           <button
             class="actions"
             *ngFor="let action of options.rowActions; let i = index"
-            mat-mini-fab
+            mat-icon-button
             (click)="action.action($event, row)"
           >
             <mat-icon>{{ action.icon }}</mat-icon>
