@@ -10,7 +10,8 @@
     "clean": "rm -rf dist/ && rm -rf coverage/",
     "copy-files": "cp -r ./templates ./dist/swagular && cp ./README.md ./dist/swagular ",
     "patch": "cd ./projects/swagular && npm version patch &&  cd ../../",
-    "publishh": "npm run patch &&  npm run build && npm run copy-files && cd ./dist/swagular && npm publish && cd ../../  && npm run clean"
+    "packagr": "ng-packagr -p ng-package.json",
+    "publishh": "npm run patch &&  npm run packagr && npm run copy-files && cd ./dist/swagular && npm publish && cd ../../  && npm run clean"
   },
   "private": true,
   "dependencies": {
