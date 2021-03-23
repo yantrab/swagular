@@ -1,0 +1,13 @@
+{
+  "name": "swagular",
+  "version": "0.1.22",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yantrab/swagular"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public-api.ts"
+    }
+  }
+}

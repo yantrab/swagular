@@ -6,7 +6,8 @@ import { {{responseClass}} } from '../{{responseFile}}';
 import { {{requestBuilderClass}} } from '../{{requestBuilderFile}}';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import { FormModel, SwagularService } from 'swagular';
+import { SwagularService } from 'swagular';
+import { FormModel } from 'swagular/models';
 
 {{#imports}}import { {{{typeName}}}{{#useAlias}} as {{{qualifiedName}}}{{/useAlias}}, {{{typeName}}}{{#useAlias}} as {{{qualifiedName}}}{{/useAlias}}Schema } from '{{{file}}}';{{/imports}}
 

@@ -1,5 +1,5 @@
 import {FormGroupTypeSafe} from 'angular-typesafe-reactive-forms-helper';
-import {InputModel} from '../input/input.model';
+import {InputModel} from './input.model';
 
 export interface FormModel<T = any> {
     formGroup: FormGroupTypeSafe<T>;

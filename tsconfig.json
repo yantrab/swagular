@@ -20,9 +20,8 @@
       "dom"
     ],
     "paths": {
-      "swagular": [
-        "dist/swagular/swagular",
-        "dist/swagular"
+      "swagular/*": [
+        "projects/swagular/*"
       ]
     }
   },

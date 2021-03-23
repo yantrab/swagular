@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {MatFormFieldAppearance} from '@angular/material/form-field';
-import {InputModel} from './input.model';
+import {InputModel} from '../models/input.model';
 // https://material.angular.io/components/input/overview
 
 

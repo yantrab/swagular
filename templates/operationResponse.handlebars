@@ -4,9 +4,7 @@ private {{responseMethodName}}({{>operationParameters}}): Observable<{{@root.res
 {{# if operation.parameters}}
 {{#operation.parameters}}
       rb.{{in}}('{{{name}}}', params{{{varAccess}}}, {{{parameterOptions}}});
-      {{#requestBody}}
-        rb.body(params.body, '{{{mediaType}}}');
-      {{/requestBody}}
+      rb.body(params.body || {}, '{{{mediaType}}}');
 {{/operation.parameters}}
 {{else}}
 {{#requestBody}}

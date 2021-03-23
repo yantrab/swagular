@@ -9,6 +9,6 @@ addFormats(ajv);
 @NgModule({
   imports: [  ],
   exports: [  ],
-  providers: [ SwagularService, FormBuilderTypeSafe, {provide: Ajv, useValue: ajv} ]
+  providers: [ {provide: Ajv, useValue: ajv}, SwagularService, FormBuilderTypeSafe ]
 })
 export class SwagularModule { }

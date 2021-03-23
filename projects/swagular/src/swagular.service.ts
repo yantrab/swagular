@@ -4,7 +4,7 @@ import {FormBuilderTypeSafe, FormGroupTypeSafe} from 'angular-typesafe-reactive-
 import {FormControl} from '@angular/forms';
 import * as _ from 'lodash';
 import {Injectable} from '@angular/core';
-import {FormModel} from './components/form/form.model';
+import {FormModel} from './models/form.model';
 @Injectable()
 export class SwagularService {
   ajvFormatToHtml: any = { time: 'time', date: 'date', dateTime: 'datetime-local', email: 'email', uri: 'url' };

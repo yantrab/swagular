@@ -4,6 +4,6 @@
   }
 
    {{methodName}}FormModel(options?: Partial<FormModel> & { displayProperties?: (keyof {{upperFirstLetter methodName}}FormGroupType & string)[] }, value?: {{upperFirstLetter methodName}}FormGroupType) {
-    return this.swagularService.getFormModel<{{upperFirstLetter methodName}}FormGroupType>({{methodName}}FormGroupSchema, options, value);
+    return this.swagularService.getFormModel<{{upperFirstLetter methodName}}FormGroupType>({{methodName}}FormGroupSchema, options as any, value);
   }
 {{/if}}
