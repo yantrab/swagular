@@ -27,11 +27,11 @@ export declare type TableOptions<T> = {
 })
 export class TableComponent implements AfterViewInit {
   @Input() set dataSource(data: any[]) {
-    this._dataSource = new TableVirtualScrollDataSource(data);
+   this._dataSource = new TableVirtualScrollDataSource(data);
   }
   @Input() options?: TableOptions<any>;
   @ContentChildren(CellDefDirective) set matCellDefs(cells: QueryList<CellDefDirective>) {
-    this._matCellDefs = keyBy(cells || {}, 'key');
+    this._matCellDefs = keyBy(cells.toArray() || {}, 'key');
   }
   @ViewChild('filter', { static: false }) filter?: ElementRef;
   _dataSource?: MatTableDataSource<any>;

@@ -1,0 +1,8 @@
+<div  style="height: 200px">
+  <swagular-table [options]="tableOptions" [dataSource]="list">
+    <ng-template appCellDef column="name" let-row="row" >
+      <div style="color: blue"> {{row.name}} </div>
+    </ng-template>
+
+  </swagular-table>
+</div>
