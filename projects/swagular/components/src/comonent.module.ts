@@ -39,6 +39,6 @@ const materialModules = [
 @NgModule({
   declarations: [InputComponent, FormComponent, TableComponent, CellDefDirective],
   imports: [CommonModule, ReactiveFormsModule, ...materialModules],
-  exports: [FormComponent, TableComponent, InputComponent, CommonModule, ...materialModules, ReactiveFormsModule]
+  exports: [FormComponent, TableComponent, InputComponent, CellDefDirective, CommonModule, ...materialModules, ReactiveFormsModule]
 })
 export class SwagularComponentModule {}
