@@ -25,12 +25,12 @@
         </th>
         <td mat-cell *matCellDef="let row">
           <ng-container
-            *ngIf="_matCellDefs[column.key]; else default"
-            [ngTemplateOutlet]="_matCellDefs[column.key].template"
+            *ngIf="_matCellDefs[column.key]; else defaultTemplate"
+            [ngTemplateOutlet]="_matCellDefs[column.key]?.template"
             [ngTemplateOutletContext]="{ row: row, index: i }"
           >
           </ng-container>
-          <ng-template #default>{{ row[column.key] }}</ng-template>
+          <ng-template #defaultTemplate>{{ row[column.key] }}</ng-template>
         </td>
       </ng-container>
     </table>

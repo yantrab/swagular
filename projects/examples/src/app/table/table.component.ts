@@ -14,9 +14,9 @@ export class TableComponent implements OnInit {
   tableOptions: TableOptions<User> = {
     columns: [
       { key: 'id', title: '', isSortable: false },
-      { key: 'name', title: '', isSortable: false }]
+      { key: 'name', title: '' }]
   };
-  list: User[] = [{id: '1a', name: 'sab'}];
+  list: User[] = [{id: '1a', name: 'sab'}, {id: 'dad', name: 'ad'}];
   constructor() { }
 
   ngOnInit(): void {
