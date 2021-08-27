@@ -3,37 +3,41 @@ import {
   EventEmitter,
   Inject,
   Input,
-  OnInit,
   Optional,
   Output,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormModel } from '../models/form.model';
-import { get } from 'lodash-es';
+import { LocaleService } from 'swagular/components/src/services/Locale.service';
 
 @Component({
   selector: 'swagular-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
   @Input() model?: FormModel & { locale?: any };
   @Output() emitter = new EventEmitter();
 
   constructor(
-    @Optional() @Inject('LOCALE') public locale: any,
+    private localeService: LocaleService,
     @Optional() public dialogRef: MatDialogRef<FormComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) private data: FormModel
   ) {
     if (data) {
       this.model = data;
     }
+    this.localeService.locale.subscribe((locale) => {
+      if (locale) {
+        this.init();
+      }
+    });
   }
 
-  ngOnInit() {
+  init() {
     if (this.model?.localePath) {
-      const locale = get(this.locale, this.model.localePath) || {};
+      const locale = this.localeService.getLocaleItem(this.model?.localePath);
       this.model = Object.assign(locale, this.model, {});
       if (!this.model) {
         return;

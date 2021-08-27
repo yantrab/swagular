@@ -8,15 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './form/form.component';
 import { SwagularModule } from 'swagular/src/swagular.module';
 
-const locale = {
-  setPasswordForm: {
-    formTitle: 'formTitle',
-    email: {
-      label: 'email label',
-    },
-  },
-};
-
 @NgModule({
   declarations: [AppComponent, TableComponent, FormComponent],
   imports: [
@@ -25,7 +16,6 @@ const locale = {
     BrowserAnimationsModule,
     SwagularModule,
   ],
-  providers: [{ provide: 'LOCALE', useValue: locale }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

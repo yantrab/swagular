@@ -19,6 +19,8 @@ import { CellDefDirective } from './table/cell-def.directive';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { LocaleService } from 'swagular/components/src/services/Locale.service';
+
 const materialModules = [
   FlexLayoutModule,
   MatCardModule,
@@ -34,11 +36,26 @@ const materialModules = [
   MatSortModule,
   MatDialogModule,
   MatSelectModule,
-  FormsModule
+  FormsModule,
 ];
+
 @NgModule({
-  declarations: [InputComponent, FormComponent, TableComponent, CellDefDirective],
+  declarations: [
+    InputComponent,
+    FormComponent,
+    TableComponent,
+    CellDefDirective,
+  ],
   imports: [CommonModule, ReactiveFormsModule, ...materialModules],
-  exports: [FormComponent, TableComponent, InputComponent, CellDefDirective, CommonModule, ...materialModules, ReactiveFormsModule]
+  exports: [
+    FormComponent,
+    TableComponent,
+    InputComponent,
+    CellDefDirective,
+    CommonModule,
+    ...materialModules,
+    ReactiveFormsModule,
+  ],
+  providers: [LocaleService],
 })
 export class SwagularComponentModule {}
