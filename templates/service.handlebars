@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { {{baseServiceClass}} } from '../{{baseServiceFile}}';
 import { {{configurationClass}} } from '../{{configurationFile}}';
-import { {{responseClass}} } from '../{{responseFile}}';
 import { {{requestBuilderClass}} } from '../{{requestBuilderFile}}';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
@@ -30,8 +29,5 @@ export class {{typeName}} extends {{baseServiceClass}} {
 {{/operations}}
 {{#operations}}
   {{#variants}}{{>operationForm}}{{/variants}}
-{{/operations}}
-{{#operations}}
-{{#variants}}{{>operationResponse}}{{/variants}}
 {{/operations}}
 }

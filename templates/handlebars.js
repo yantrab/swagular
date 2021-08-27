@@ -17,7 +17,11 @@ module.exports = function(handlebars) {
     return haystack.indexOf(needle) > -1 ? options.fn(this) : options.inverse(this);
   });
 
+  handlebars.registerHelper("isNill", function(needle, options) {
+      return !!needle?.$ref;
+  });
+
   handlebars.registerHelper("isRef", function(needle, options) {
-    return needle.$ref ? options.fn(this) : options.inverse(this);
+    return needle?.$ref ? options.fn(this) : options.inverse(this);
   });
 };

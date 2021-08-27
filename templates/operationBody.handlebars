@@ -1,5 +1,20 @@
 {{methodName}}({{>operationParameters}}): Observable<{{{resultType}}}> {
-    return this.{{responseMethodName}}({{# if operation.hasParameters}}params{{else}} {{# if operation.requestBody}}params{{/if}}{{/if}}).pipe(
-      map((r: {{@root.responseClass}}<{{{resultType}}}>) => r.body as {{{resultType}}})
-    );
+const rb = new {{@root.requestBuilderClass}}(this.rootUrl, {{@root.typeName}}.{{operation.pathVar}}, '{{operation.method}}');
+
+{{#operation.parameters}}
+  rb.{{in}}('{{{name}}}', {{{name}}}, {{{parameterOptions}}});
+{{/operation.parameters}}
+
+{{#requestBody}}
+  rb.body({{>bodyParamName}}, '{{{mediaType}}}');
+{{/requestBody}}
+
+return this.http.request(rb.build({
+responseType: '{{responseType}}',
+accept: '{{accept}}'
+})).pipe(
+filter((r: any) => r instanceof HttpResponse),
+map(r => r.body as {{{resultType}}})
+);
+
   }

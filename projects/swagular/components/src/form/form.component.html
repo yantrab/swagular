@@ -1,11 +1,12 @@
 <ng-container *ngIf="model">
-  <mat-toolbar *ngIf="model.formTitle" style="margin-bottom: -5px" color="primary">
+  <mat-toolbar *ngIf="model.formTitle" color="primary" style="margin-bottom: -5px">
     <span>{{ model.formTitle }}</span>
   </mat-toolbar>
   <mat-card>
-    <form [formGroup]="model.formGroup" (ngSubmit)="emitter.emit(model.formGroup.value)">
+    <form (ngSubmit)="emitter.emit(model.formGroup.value)" [formGroup]="model.formGroup">
       <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between">
-        <swagular-input *ngFor="let field of model.fields" [model]="field" [control]="getControl(field.key)"></swagular-input>
+        <swagular-input *ngFor="let field of model.fields" [control]="getControl(field.key)"
+                        [model]="field"></swagular-input>
       </mat-card-content>
 
       <mat-dialog-actions *ngIf="dialogRef">
@@ -14,7 +15,8 @@
       </mat-dialog-actions>
 
       <mat-card-actions *ngIf="!dialogRef">
-        <button class="save-button" type="submit" mat-raised-button color="primary" [disabled]="!model?.formGroup?.valid">
+        <button [disabled]="!model?.formGroup?.valid" class="save-button" color="primary" mat-raised-button
+                type="submit">
           {{ model.formSaveButtonTitle || "SAVE" }}
         </button>
       </mat-card-actions>

@@ -3,20 +3,29 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
-import {SwagularComponentModule} from 'swagular/components/src/comonent.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SwagularComponentModule } from 'swagular/components/src/component.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormComponent } from './form/form.component';
+import { SwagularModule } from 'swagular/src/swagular.module';
+
+const locale = {
+  setPasswordForm: {
+    formTitle: 'formTitle',
+    email: {
+      label: 'email label',
+    },
+  },
+};
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TableComponent
+  declarations: [AppComponent, TableComponent, FormComponent],
+  imports: [
+    BrowserModule,
+    SwagularComponentModule,
+    BrowserAnimationsModule,
+    SwagularModule,
   ],
-    imports: [
-        BrowserModule,
-        SwagularComponentModule,
-      BrowserAnimationsModule
-    ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: 'LOCALE', useValue: locale }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
