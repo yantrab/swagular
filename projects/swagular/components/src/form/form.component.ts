@@ -9,7 +9,7 @@ import {
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormModel } from '../models/form.model';
-import { LocaleService } from 'swagular/components/src/locale.service';
+import { LocaleService } from '../locale.service';
 
 @Component({
   selector: 'swagular-form',
