@@ -9,7 +9,7 @@ import {
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormModel } from '../models/form.model';
-import { LocaleService } from 'swagular/components/src/services/Locale.service';
+import { LocaleService } from 'swagular/components/src/locale.service';
 
 @Component({
   selector: 'swagular-form',
@@ -21,23 +21,25 @@ export class FormComponent {
   @Output() emitter = new EventEmitter();
 
   constructor(
-    private localeService: LocaleService,
     @Optional() public dialogRef: MatDialogRef<FormComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) private data: FormModel
+    @Optional() @Inject(MAT_DIALOG_DATA) private data: FormModel,
+    @Optional() private localeService?: LocaleService
   ) {
     if (data) {
       this.model = data;
     }
-    this.localeService.locale.subscribe((locale) => {
-      if (locale) {
-        this.init();
-      }
-    });
+    if (this.localeService) {
+      this.localeService.locale.subscribe((locale) => {
+        if (locale) {
+          this.init();
+        }
+      });
+    }
   }
 
   init() {
     if (this.model?.localePath) {
-      const locale = this.localeService.getLocaleItem(this.model?.localePath);
+      const locale = this.localeService?.getLocaleItem(this.model?.localePath);
       this.model = Object.assign(locale, this.model, {});
       if (!this.model) {
         return;

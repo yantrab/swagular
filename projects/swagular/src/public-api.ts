@@ -4,5 +4,3 @@
 
 export * from './swagular.service';
 export * from './swagular.module';
-
-

@@ -8,20 +8,20 @@ export class LocaleService {
   direction: 'rtl' | 'ltr' = 'rtl';
 
   constructor(
-    @Optional() @Inject('baseUrlI18n') private readonly baseUrl?: string
+    @Optional() @Inject('baseLocaleUrl') private readonly baseUrl?: string
   ) {
     this.baseUrl = this.baseUrl || 'assets/locale';
-    const storedLanguage = localStorage.getItem('language') as 'en' | 'he';
+    const storedLanguage = localStorage.getItem('language');
     this.language = storedLanguage || 'en';
   }
 
-  private _language: 'en' | 'he' = 'en';
+  private _language = 'en';
 
   get language() {
     return this._language;
   }
 
-  set language(value: 'en' | 'he') {
+  set language(value: string) {
     this._language = value;
     localStorage.setItem('language', value);
     this.direction = value === 'he' ? 'rtl' : 'ltr';
