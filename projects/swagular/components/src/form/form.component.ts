@@ -10,6 +10,7 @@ import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormModel } from '../models/form.model';
 import { LocaleService } from '../locale.service';
+import { identity, pickBy } from 'lodash-es';
 
 @Component({
   selector: 'swagular-form',
@@ -38,9 +39,12 @@ export class FormComponent {
   }
 
   init() {
-    if (this.model?.localePath) {
+    if (!this.model) {
+      return;
+    }
+    if (this.model.localePath) {
       const locale = this.localeService?.getLocaleItem(this.model?.localePath);
-      this.model = Object.assign(locale, this.model, {});
+      this.model = Object.assign(locale, pickBy(this.model, identity), {});
       if (!this.model) {
         return;
       }
@@ -49,9 +53,23 @@ export class FormComponent {
         if (!this.model) {
           return;
         }
-        this.model.fields[i] = Object.assign(locale[f.key] || {}, f, {});
+        this.model.fields[i] = Object.assign(
+          locale[f.key] || {},
+          pickBy(f, identity),
+          {}
+        );
       });
     }
+
+    this.model.formSaveButtonTitle = this.model.formSaveButtonTitle || 'Save';
+    this.model.formCancelButtonTitle =
+      this.model.formCancelButtonTitle || 'Cancel';
+    this.model.fields.forEach((f) => {
+      f.label =
+        f.label ||
+        f.key.charAt(0).toUpperCase() +
+          f.key.slice(1).replace(/([A-Z])/g, ($1: string) => ' ' + $1);
+    });
   }
 
   getControl(key: string) {
