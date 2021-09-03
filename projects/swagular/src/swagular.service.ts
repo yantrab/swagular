@@ -95,7 +95,7 @@ export class SwagularService {
           const errors = validate.errors;
           errors?.forEach((error: any) => {
             const key =
-              error.dataPath.replace('/', '') || error.params.missingProperty;
+              error.dataPath?.replace('/', '') || error.params.missingProperty;
             result[key] = error.message;
             formControls[key].setErrors([error.message]);
           });
