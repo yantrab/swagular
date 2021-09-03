@@ -6,7 +6,7 @@ Make your swagger specification source of true by generate client api includes f
 To prevent rewrite schema again (in angular forms), or even more - prevent write the ui.
 
 For example, we can just do :
-```angular2html
+```typescript
 model = this.swagularService.loginFormModel({ fields: [{ key: 'email' }, { key: 'password', type: 'password' }] });
 ```
 
