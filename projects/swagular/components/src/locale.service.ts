@@ -30,7 +30,13 @@ export class LocaleService {
     });
   }
 
-  getLocaleItem(path: string) {
-    return get(this.locale.value, path);
+  async getLocaleItem(path: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.locale.subscribe((locale) => {
+        if (locale) {
+          resolve(get(locale, path));
+        }
+      });
+    });
   }
 }

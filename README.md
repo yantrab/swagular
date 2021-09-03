@@ -2,16 +2,31 @@
 
 Make your swagger specification source of true by generate client api includes form group controllers.
 
+## Motivation
+To prevent rewrite schema again (in angular forms), or even more - prevent write the ui.
+
+For example, we can just do :
+```angular2html
+model = this.swagularService.loginFormModel({ fields: [{ key: 'email' }, { key: 'password', type: 'password' }] });
+```
+
+And then using it in our component:
+```html
+<swagular-form class="container" [model]="model" (submit)="login()"></swagular-form>
+```
+
+The full example is [here](https://github.com/yantrab/strongly-swagular-starter)
+
 ## Get started
-This package use [OpenAPI 3 code generator](https://www.npmjs.com/package/ng-openapi-gen) to generate the client api, so first run ```npm i ng-openapi-gen -D```
+This package is using [OpenAPI 3 code generator](https://www.npmjs.com/package/ng-openapi-gen) to generate the client api, so first run ```npm i ng-openapi-gen -D```
 
 Install the package by running ```npm i swagular```
 
-Add script that swill generate the client api code to your package.json:
+Add script that will generate the client api code to your package.json:
 
 ```"gen": "ng-openapi-gen --input [path to your api doc] --templates node_modules/swagular/templates",```
 
-Now you can just run ```npm run gen```, it will generate the code in src/app/api folder.
+Now you can just run ```npm run gen```, it will generate the code under src/app/api folder.
 
 import the modules to your angular modules -
 

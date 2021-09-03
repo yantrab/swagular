@@ -1,8 +1,10 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Inject,
   Input,
+  OnInit,
   Optional,
   Output,
 } from '@angular/core';
@@ -16,8 +18,9 @@ import { identity, pickBy } from 'lodash-es';
   selector: 'swagular-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
   @Input() model?: FormModel & { locale?: any };
   @Output() emitter = new EventEmitter();
 
@@ -29,6 +32,9 @@ export class FormComponent {
     if (data) {
       this.model = data;
     }
+  }
+
+  ngOnInit() {
     if (this.localeService) {
       this.localeService.locale.subscribe((locale) => {
         if (locale) {
@@ -37,13 +43,14 @@ export class FormComponent {
       });
     }
   }
-
-  init() {
+  async init() {
     if (!this.model) {
       return;
     }
-    if (this.model.localePath) {
-      const locale = this.localeService?.getLocaleItem(this.model?.localePath);
+    if (this.model.localePath && this.localeService) {
+      const locale = await this.localeService.getLocaleItem(
+        this.model?.localePath
+      );
       this.model = Object.assign(locale, pickBy(this.model, identity), {});
       if (!this.model) {
         return;

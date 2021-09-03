@@ -50,11 +50,13 @@ export class SwagularService {
         ),
     };
     result.fields.forEach((f) => {
-      f.type = this.getPropertyType(schema.properties[f.key]);
-      f.options = schema.properties[f.key].enum?.map((key: any) => ({
-        title: key,
-        value: key,
-      })); // TODO array
+      f.type = f.type || this.getPropertyType(schema.properties[f.key]);
+      f.options =
+        f.options ||
+        schema.properties[f.key].enum?.map((key: any) => ({
+          title: key,
+          value: key,
+        })); // TODO array
     });
     return result;
   }
