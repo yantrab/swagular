@@ -4,7 +4,7 @@ import { get } from 'lodash-es';
 
 @Injectable()
 export class LocaleService {
-  locale = new BehaviorSubject({});
+  locale = new BehaviorSubject(undefined);
   direction: 'rtl' | 'ltr' = 'rtl';
 
   constructor(

@@ -19,7 +19,6 @@ import { CellDefDirective } from './table/cell-def.directive';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
-import { LocaleService } from './locale.service';
 
 const materialModules = [
   FlexLayoutModule,
@@ -56,6 +55,5 @@ const materialModules = [
     ...materialModules,
     ReactiveFormsModule,
   ],
-  providers: [LocaleService],
 })
 export class SwagularComponentModule {}

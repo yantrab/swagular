@@ -3,7 +3,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { {{configurationClass}}, {{configurationParams}} } from './{{configurationFile}}';
 {{#services}}import { {{typeName}} } from './services/{{fileName}}';
 {{/services}}
-
+import * as models from './models';
+import { SwagularService } from 'swagular';
 /**
  * Module that provides all services and configuration.
  */
@@ -32,7 +33,8 @@ export class {{moduleClass}} {
 
   constructor(
     @Optional() @SkipSelf() parentModule: {{moduleClass}},
-    @Optional() http: HttpClient
+    @Optional() http: HttpClient,
+    swagularService: SwagularService
   ) {
     if (parentModule) {
       throw new Error('{{moduleClass}} is already loaded. Import in your base AppModule only.');
@@ -41,5 +43,10 @@ export class {{moduleClass}} {
       throw new Error('You need to import the HttpClientModule in your AppModule! \n' +
       'See also https://github.com/angular/angular/issues/20575');
     }
+    Object.keys(models).forEach(key => {
+      if (key.endsWith('Schema')) {
+         swagularService.addSchema('#/components/schemas/' + key.replace('Schema', ''), (models as any)[key]);
+      }
+  });
   }
 }

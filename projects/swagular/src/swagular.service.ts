@@ -19,7 +19,13 @@ export class SwagularService {
     uri: 'url',
   };
 
-  constructor(private ajv: Ajv, private fb: FormBuilderTypeSafe) {}
+  constructor(private ajv: Ajv, private fb: FormBuilderTypeSafe) {
+    this.ajv.opts.strict = false;
+  }
+
+  addSchema(key: string, schema: any) {
+    this.ajv.addSchema(schema, key);
+  }
 
   getFormModel<T>(
     schema: any,
@@ -50,10 +56,15 @@ export class SwagularService {
         ),
     };
     result.fields.forEach((f) => {
-      f.type = f.type || this.getPropertyType(schema.properties[f.key]);
+      let s = schema.properties[f.key];
+
+      if (s.$ref) {
+        s = this.ajv.getSchema(s.$ref)?.schema;
+      }
+      f.type = f.type || this.getPropertyType(s);
       f.options =
         f.options ||
-        schema.properties[f.key].enum?.map((key: any) => ({
+        s.enum?.map((key: any) => ({
           title: key,
           value: key,
         })); // TODO array
