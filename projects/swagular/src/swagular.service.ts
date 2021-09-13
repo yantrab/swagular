@@ -88,6 +88,15 @@ export class SwagularService {
           Object.keys(formGroup.value).forEach((key) => {
             // @ts-ignore
             value = formGroup.value[key];
+
+            // https://github.com/angular/angular/issues/13243
+            if (schema.properties[key].type === 'number') {
+              try {
+                // @ts-ignore
+                value = +value;
+              } catch {}
+            }
+
             if (typeof value === 'string') {
               // @ts-ignore
               value = value.trim();
@@ -95,6 +104,7 @@ export class SwagularService {
             if (!value) {
               value = undefined;
             }
+
             // @ts-ignore
             formGroup.value[key] = value;
           });
