@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Inject,
@@ -18,7 +17,7 @@ import { identity, pickBy } from 'lodash-es';
   selector: 'swagular-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent implements OnInit {
   @Input() model?: FormModel & { locale?: any };

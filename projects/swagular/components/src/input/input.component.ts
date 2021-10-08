@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { InputModel } from '../models/input.model';
@@ -12,7 +7,7 @@ import { InputModel } from '../models/input.model';
   selector: 'swagular-input',
   templateUrl: `./input.component.html`,
   styleUrls: ['./input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent implements OnInit {
   @Input() model?: InputModel;

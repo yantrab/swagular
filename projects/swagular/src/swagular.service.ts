@@ -100,8 +100,13 @@ export class SwagularService {
             if (typeof value === 'string') {
               // @ts-ignore
               value = value.trim();
+              if (!value) {
+                value = undefined;
+              }
             }
-            if (!value) {
+
+            // angular set null when no value, so we replace it to undefined
+            if (value == null) {
               value = undefined;
             }
 
