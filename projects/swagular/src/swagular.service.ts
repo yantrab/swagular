@@ -64,8 +64,8 @@ export class SwagularService {
       f.type = f.type || this.getPropertyType(s);
       f.options =
         f.options ||
-        s.enum?.map((key: any) => ({
-          title: key,
+        s.enum?.map((key: any, i: number) => ({
+          title: s['x-enumNames']?.[i] || key,
           value: key,
         })); // TODO array
     });
