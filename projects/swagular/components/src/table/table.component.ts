@@ -27,7 +27,7 @@ export declare type TableOptions<T> = {
   filter?: { placeholder: string };
   filterable?: boolean;
   rowActions?: {
-    icon: string;
+    icon: string | ((row: T) => string);
     action: ($event: MouseEvent, row: T) => any;
   }[];
   actions?: { rowClick: (row: T) => void };
@@ -100,5 +100,13 @@ export class TableComponent implements AfterViewInit {
     $event.stopPropagation();
     $event.preventDefault();
     action($event, row);
+  }
+
+  getActionIcon(icon: any, row: any) {
+    if (typeof icon === 'function') {
+      return icon(row);
+    }
+
+    return icon;
   }
 }

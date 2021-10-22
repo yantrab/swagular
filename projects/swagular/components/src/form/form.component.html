@@ -3,18 +3,18 @@
     <span>{{ model.formTitle }}</span>
   </mat-toolbar>
   <mat-card>
-    <form (ngSubmit)="emitter.emit(model.formGroup.value)" [formGroup]="model.formGroup">
+    <form (ngSubmit)="save.emit(model.formGroup.value)" [formGroup]="model.formGroup">
       <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between">
         <swagular-input *ngFor="let field of model.fields" [control]="getControl(field.key)"
                         [model]="field"></swagular-input>
       </mat-card-content>
 
       <mat-dialog-actions *ngIf="dialogRef">
-        <button (click)="save()" mat-raised-button>{{ model.formSaveButtonTitle || "SAVE" }}</button>
+        <button (click)="onSave()" mat-raised-button>{{ model.formSaveButtonTitle || "SAVE" }}</button>
         <button (click)="cancel()" mat-raised-button>{{ model.formCancelButtonTitle || "CANCEL" }}</button>
       </mat-dialog-actions>
 
-      <mat-card-actions *ngIf="!dialogRef">
+      <mat-card-actions *ngIf="!dialogRef && showSaveButton">
         <button [disabled]="!model?.formGroup?.valid" class="save-button" color="primary" mat-raised-button
                 type="submit">
           {{ model.formSaveButtonTitle || "SAVE" }}

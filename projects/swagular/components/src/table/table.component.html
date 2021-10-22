@@ -15,7 +15,7 @@
             class="actions"
             mat-icon-button
           >
-            <mat-icon>{{ action.icon }}</mat-icon>
+            <mat-icon>{{ getActionIcon(action.icon, row) }}</mat-icon>
           </button>
         </td>
       </ng-container>

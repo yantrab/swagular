@@ -21,8 +21,8 @@ import { identity, pickBy } from 'lodash-es';
 })
 export class FormComponent implements OnInit {
   @Input() model?: FormModel & { locale?: any };
-  @Output() emitter = new EventEmitter();
-
+  @Output() save = new EventEmitter();
+  @Input() showSaveButton = true;
   constructor(
     @Optional() public dialogRef: MatDialogRef<FormComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) private data: FormModel,
@@ -82,13 +82,13 @@ export class FormComponent implements OnInit {
     return this.model?.formGroup.controls[key] as FormControl;
   }
 
-  save() {
+  onSave() {
     if (this.dialogRef) {
       if (this.model?.formGroup.valid) {
         this.dialogRef.close(this.model?.formGroup.value);
       }
     } else {
-      this.emitter.emit(this.model?.formGroup.value);
+      this.save.emit(this.model?.formGroup.value);
     }
   }
 
