@@ -30,6 +30,7 @@ export declare type TableOptions<T> = {
     icon: string | ((row: T) => string);
     action: ($event: MouseEvent, row: T) => any;
   }[];
+  rowClass?: (row: T) => string;
   actions?: { rowClick: (row: T) => void };
 };
 
@@ -45,7 +46,9 @@ export class TableComponent implements AfterViewInit {
   public columns?: string[];
 
   @ViewChild(MatSort, { static: false }) set sort(value: MatSort) {
-    if (this._dataSource) this._dataSource.sort = value;
+    if (this._dataSource) {
+      this._dataSource.sort = value;
+    }
   }
 
   _dataSource?: MatTableDataSource<any>;

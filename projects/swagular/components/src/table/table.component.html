@@ -5,7 +5,7 @@
   <cdk-virtual-scroll-viewport [tvsItemSize]="48" fxFlex>
     <table [dataSource]="_dataSource" mat-table matSort>
       <tr *matHeaderRowDef="columns; sticky: true" mat-header-row></tr>
-      <tr (click)="rowClick(row)" *matRowDef="let row; columns: columns" mat-row></tr>
+      <tr (click)="rowClick(row)" *matRowDef="let row; columns: columns" [class]="options.rowClass && options.rowClass(row)" mat-row></tr>
       <ng-container *ngIf="options.rowActions" matColumnDef="actions">
         <th *matHeaderCellDef class="actions-column" mat-header-cell></th>
         <td *matCellDef="let row" mat-cell>
