@@ -6,7 +6,7 @@
       {{ option.title }}
     </mat-option>
   </mat-select>
-  <input autocomplete="nope" *ngSwitchDefault [formControl]="control" [type]="type === 'password' ? (hidePassword ? 'password' : 'text') : type" matInput />
+  <input autocomplete="off" *ngSwitchDefault [formControl]="control" [type]="type === 'password' ? (hidePassword ? 'password' : 'text') : type" matInput />
   <a (click)="hidePassword = !hidePassword" *ngIf="type === 'password'" mat-icon-button matSuffix>
     <mat-icon matSuffix>{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon>
   </a>
