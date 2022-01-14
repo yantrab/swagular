@@ -6,9 +6,9 @@
     "url": "https://github.com/yantrab/swagular"
   },
   "dependencies": {
-    "ajv": "^7.0.3",
-    "ajv-formats": "^1.5.1",
-    "angular-typesafe-reactive-forms-helper": "^2.0.1",
-    "lodash-es": "^4.17.20"
+    "ajv": "7.0.3",
+    "ajv-formats": "1.5.1",
+    "angular-typesafe-reactive-forms-helper": "^2.0.2",
+    "lodash-es": "^4.17.21"
   }
 }
