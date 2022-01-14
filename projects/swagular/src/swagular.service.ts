@@ -90,7 +90,7 @@ export class SwagularService {
             value = formGroup.value[key];
 
             // https://github.com/angular/angular/issues/13243
-            if (schema.properties[key].type === 'number') {
+            if (schema.properties[key].type === 'number' && value !== undefined && value !== null) {
               try {
                 // @ts-ignore
                 value = +value;
