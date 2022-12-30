@@ -12,6 +12,7 @@
           <button
             (click)="raiseAction(action.action, $event, row)"
             *ngFor="let action of options.rowActions; let i = index"
+            [title]="getActionTitle(action.title, row)"
             class="actions"
             mat-icon-button
           >

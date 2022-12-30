@@ -28,6 +28,7 @@ export declare type TableOptions<T> = {
   filterable?: boolean;
   rowActions?: {
     icon: string | ((row: T) => string);
+    title?: string | ((row:T) => string);
     action: ($event: MouseEvent, row: T) => any;
   }[];
   rowClass?: (row: T) => string;
@@ -111,5 +112,13 @@ export class TableComponent implements AfterViewInit {
     }
 
     return icon;
+  }
+
+  getActionTitle(title: any, row: any) {
+    if (typeof title === 'function') {
+      return title(row);
+    }
+
+    return title || "";
   }
 }

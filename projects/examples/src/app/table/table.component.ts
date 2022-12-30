@@ -21,6 +21,7 @@ export class TableComponent implements OnInit {
         console.log(row);
       },
     },
+    rowActions:[{action:() =>{}, icon:'manage_accounts', title:"Some title"}, {action:() =>{}, icon:'manage_accounts'}]
   };
   list: User[] = [
     { id: '1a', name: 'sab' },
