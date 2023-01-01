@@ -19,6 +19,7 @@ import { CellDefDirective } from './table/cell-def.directive';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const materialModules = [
   FlexLayoutModule,
@@ -45,7 +46,7 @@ const materialModules = [
     TableComponent,
     CellDefDirective,
   ],
-  imports: [CommonModule, ReactiveFormsModule, ...materialModules],
+  imports: [CommonModule, ReactiveFormsModule, ...materialModules, MatTooltipModule],
   exports: [
     FormComponent,
     TableComponent,

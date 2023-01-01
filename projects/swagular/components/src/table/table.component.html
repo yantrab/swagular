@@ -8,16 +8,18 @@
       <tr (click)="rowClick(row)" *matRowDef="let row; columns: columns" [class]="options.rowClass && options.rowClass(row)" mat-row></tr>
       <ng-container *ngIf="options.rowActions" matColumnDef="actions">
         <th *matHeaderCellDef class="actions-column" mat-header-cell></th>
-        <td *matCellDef="let row" mat-cell>
+        <td *matCellDef="let row" mat-cell >
+          <div class="actions">
           <button
+            class="button"
             (click)="raiseAction(action.action, $event, row)"
             *ngFor="let action of options.rowActions; let i = index"
-            [title]="getActionTitle(action.title, row)"
-            class="actions"
+            [matTooltip]="getActionTitle(action.title, row)"
             mat-icon-button
           >
             <mat-icon>{{ getActionIcon(action.icon, row) }}</mat-icon>
           </button>
+        </div>
         </td>
       </ng-container>
       <ng-container *ngFor="let column of options?.columns; let i = index" matColumnDef="{{ column.key }}">

@@ -16,11 +16,18 @@ table {
   .actions {
     visibility: hidden;
   }
-  .mat-row {
+  tr {
     color: #000;
-    :hover {
+    &:hover {
       .actions {
         visibility: visible;
+        button{
+          opacity: 0.5;
+          &:hover{
+            opacity: 1;
+          }
+        }
+
       }
     }
   }
